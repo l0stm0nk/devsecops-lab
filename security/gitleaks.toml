@@ -1,0 +1,25 @@
+title = "devsecops-lab gitleaks config"
+
+# Inherit all the default rules first
+[extend]
+useDefault = true
+
+# Custom rule: catch hardcoded assignments the default ruleset misses
+[[rules]]
+id = "generic-hardcoded-secret"
+description = "Hardcoded secret/password/key assignment"
+regex = '''(?i)(secret_key|password|passwd|api_key|apikey|token)\s*[=:]\s*['"][^'"]{4,}['"]'''
+keywords = [
+    "secret_key",
+    "password",
+    "passwd",
+    "api_key",
+    "apikey",
+    "token",
+]
+
+[[rules.allowlist]]
+description = "ignore obvious placeholders"
+regexes = [
+    '''(?i)(your[-_]?|example|placeholder|changeme|xxx|<.*>)''',
+]
