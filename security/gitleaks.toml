@@ -18,7 +18,7 @@ keywords = [
     "token",
 ]
 
-[[rules.allowlist]]
+[rules.allowlist]
 description = "ignore obvious placeholders"
 regexes = [
     '''(?i)(your[-_]?|example|placeholder|changeme|xxx|<.*>)''',
